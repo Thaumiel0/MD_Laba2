@@ -43,7 +43,6 @@ try:
 
     cursor = conn.cursor()
 
-    # 3. Insert data into the Souvenirs table
     insert_query = """
     INSERT INTO Souvenirs 
     (ShortName, Name, Description, Rating, IdCategory, IdColor, Size, IdMaterial, Weight, 
@@ -51,7 +50,6 @@ try:
     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     """
 
-    # 4. Iterate over the DataFrame and insert each row
     for _, row in df.iterrows():
         cursor.execute(insert_query, (
             row['shortname'],
@@ -71,7 +69,6 @@ try:
             float(row['price']) if pd.notna(row['price']) else None
         ))
 
-    # 5. Commit the transaction and close the connection
     conn.commit()
 
 except Exception as error:
