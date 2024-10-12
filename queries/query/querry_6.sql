@@ -1,3 +1,5 @@
-SELECT sc.ID, sc.Name
-FROM souvenircategories sc
-WHERE sc.IdParent = (SELECT ID FROM souvenircategories WHERE Name = 'Органайзеры для авто')
+SELECT Name
+FROM souvenircategories
+WHERE Name IS NOT NULL AND Name != ''
+GROUP BY Name
+HAVING COUNT(Name) > 1

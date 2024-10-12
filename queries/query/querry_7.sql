@@ -1,5 +1,5 @@
-SELECT Name
-FROM souvenircategories
-WHERE Name IS NOT NULL AND Name != ''
-GROUP BY Name
-HAVING COUNT(Name) > 1
+SELECT s.Name, m.Name as Material 
+FROM souvenirs AS s
+JOIN souvenirmaterials AS m
+ON s.IdMaterial = m.Id
+WHERE m.Name = 'металл'
